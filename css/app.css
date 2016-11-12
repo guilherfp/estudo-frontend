@@ -1,0 +1,22 @@
+.jumbotron {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+}
+
+.header {
+  text-align: center;
+}
+
+.contatos {
+  margin-top: 15px;
+}
+
+.selecionado {
+  background-color: yellow;
+}
+
+.negrito {
+  font-weight: bold;
+}

@@ -1,0 +1,37 @@
+<div class="header">
+	<h3>{{app}}</h3>
+</div>
+
+<ui-alert title="Ops, Aconteceu um problema!" ng-show="error">
+	{{error}}
+</ui-alert>
+<div class="contatos" ng-show="contatos.length > 0">
+	<input type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?" class="form-control" 
+		ng-model-options="{updateOn: 'default blur', debounce: {default: 400, blur: 0}}">
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Serial</th>
+				<th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
+				<th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
+				<th>Operadora</th>
+				<th>Preço com impostos</th>
+				<th>Data</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:{nome: criterioDeBusca} | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
+				<td><input type="checkbox" ng-model="contato.selecionado" ng-click="verificarSelecao(contatos)"></td>
+				<td>{{::contato.serial}}</td>
+				<td> <a href="#/contato/{{contato.id}}">{{contato.nome | name}}</a></td>
+				<td>{{::contato.telefone}}</td>
+				<td>{{::contato.operadora | labelOperadora}}</td>
+				<td>{{::contato.operadora.precoComImposto | currency}}</td>
+				<td>{{::contato.data | date:'dd/MM/yyyy'}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<a href="#/novo" class="btn btn-primary btn-block">Novo Contato</a>
+<button ng-click="apagarContatos(contatos)" ng-if="hasContatoSelecionado" type="button" class="btn btn-large btn-block btn-danger">Apagar Selecionados</button>

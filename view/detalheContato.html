@@ -1,0 +1,21 @@
+<table class="table table-hover">
+	<tbody>
+		<tr>
+			<th>Nome</th>
+			<td>{{contato.nome | name}}</td>
+		</tr>
+		<tr>
+			<th>Telefone</th>
+			<td>{{contato.telefone}}</td>
+		</tr>
+		<tr>
+			<th>Data</th>
+			<td>{{contato.data | date: 'dd/MM/yyyy'}}</td>
+		</tr>
+		<tr>
+			<th>Operadora</th>
+			<td>{{contato.operadora | labelOperadora}}</td>
+		</tr>
+	</tbody>
+</table>
+<a href="#/contatos" class="btn btn-default btn-block">Voltar</a>
